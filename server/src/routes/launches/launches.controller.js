@@ -38,13 +38,13 @@ function httpAddNewLaunch(req, res) {
 function httpAbortLaunch(req, res) {
   const launchId = +req.params.id;
 
-  if (existsLaunchId(launchId)) {
+  if (!existsLaunchId(launchId)) {
     const error = "Launch not found.";
 
     return res.status(400).json({ error });
   }
   
-  const aborted = abortLaunchById(launchId);
+  const aborted = abortLaunchById(+launchId);
 
   return res.status(200).json(aborted);
 }
