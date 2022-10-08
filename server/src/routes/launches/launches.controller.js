@@ -30,4 +30,12 @@ function httpAddNewLaunch(req, res) {
   return res.status(201).json(launch);
 }
 
-module.exports = { httpGetAllLaunches, httpAddNewLaunch };
+function httpRemoveLaunch(req, res) {
+    const launch = req.body;
+
+    if(launch.id) {
+
+    }
+}
+
+module.exports = { httpGetAllLaunches, httpAddNewLaunch, httpRemoveLaunch };
