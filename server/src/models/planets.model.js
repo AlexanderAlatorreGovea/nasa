@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 const { parse } = require("csv-parse");
 
+const planets = require("./planets.mongo");
+
 const habitablePlanets = [];
 
 const isHabitable = (planet) =>
@@ -12,18 +14,18 @@ const isHabitable = (planet) =>
 
 function loadPlanetsData() {
   return new Promise((resolve, reject) => {
-    fs.createReadStream(
-      path.join(__dirname, "..", "data", "kepler_data.csv")
-    )
+    fs.createReadStream(path.join(__dirname, "..", "data", "kepler_data.csv"))
       .pipe(
         parse({
           comment: "#",
           columns: true,
         })
       )
-      .on("data", (data) => {
+      .on("data", async (data) => {
         if (isHabitable(data)) {
-          habitablePlanets.push(data);
+          //upsert is to save the loadPlanetsData only once if
+          //the collection doesn't already exist
+          savePlanet(data);
         }
       })
       .on("error", (err) => {
@@ -36,7 +38,27 @@ function loadPlanetsData() {
       });
   });
 }
+
+async function getAllPlanets() {
+  return await planets.find({});
+}
+
+async function savePlanet(planet) {
+  await planets.updateOne(
+    {
+      keplerName: planet.keplerName,
+    },
+    {
+      keplerName: planet.keplerName,
+    },
+    {
+      upsert: true,
+    }
+  );
+}
+
 module.exports = {
   loadPlanetsData,
+  getAllPlanets,
   planets: habitablePlanets,
 };
