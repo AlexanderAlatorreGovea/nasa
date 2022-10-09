@@ -24,5 +24,8 @@
   "bugs": {
     "url": "https://github.com/AlexanderAlatorreGovea/nasa-/issues"
   },
-  "homepage": "https://github.com/AlexanderAlatorreGovea/nasa-#readme"
+  "homepage": "https://github.com/AlexanderAlatorreGovea/nasa-#readme",
+  "dependencies": {
+    "dotenv": "^16.0.3"
+  }
 }

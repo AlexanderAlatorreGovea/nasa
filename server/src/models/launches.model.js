@@ -1,3 +1,4 @@
+//const launches = require("./launches.mogo");
 const launches = new Map();
 
 let latestFlightNumber = 100;
