@@ -4,14 +4,20 @@
   "description": "Nasa API",
   "main": "server.js",
   "jest": {
+    "verbose": true,
+    "testMatch": [
+      "**/?(*.)+(spec|test).[jt]s?(x)"
+    ],
     "transformIgnorePatterns": [
-      "!node_modules/"
-    ]
+      "/node_modules/"
+    ],
+    "testEnvironment": "node"
   },
   "scripts": {
     "watch": "nodemon src/server.js",
     "start": "node src/server.js",
-    "test": "jest --watch",
+    "test": "jest",
+    "test-watch": "jest --watch",
     "cluster": "pm2 start src/server.js -i max"
   },
   "keywords": [],
@@ -26,7 +32,7 @@
     "pm2": "^5.2.0"
   },
   "devDependencies": {
-    "jest": "^29.1.2",
+    "jest": "^27.0.0",
     "nodemon": "^2.0.20",
     "supertest": "^6.3.0"
   }
