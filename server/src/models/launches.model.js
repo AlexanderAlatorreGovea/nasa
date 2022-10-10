@@ -1,3 +1,4 @@
+const axios = require("axios");
 const launches = require("./launches.mogo");
 const planets = require("./planets.mongo");
 
@@ -101,7 +102,29 @@ async function abortLaunchById(launchId) {
   }
 }
 
+const SPACEX_API_URL = "https://api.spacexdata.com/v4/launches/query";
+async function loadLaunchData() {
+  try {
+    await axios.post(SPACEX_API_URL, {
+      query: {},
+      options: {
+        populate: [
+          {
+            path: "rocket",
+            select: {
+              name: 1,
+            },
+          },
+        ],
+      },
+    });
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 module.exports = {
+  loadLaunchData,
   scheduleNewLaunch,
   existsLaunchWithId,
   abortLaunchById,
