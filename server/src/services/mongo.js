@@ -1,9 +1,5 @@
 const mongoose = require("mongoose");
 
-if (process.env.NODE_ENV !== "production") {
-  require("dotenv").config();
-}
-
 mongoose.connection.once("open", () => {
   console.log("MongoDB connection established");
 });
