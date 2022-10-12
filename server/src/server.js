@@ -6,6 +6,10 @@ const { loadPlanetsData } = require("./models/planets.model");
 const { loadLaunchData } = require("./models/launches.model");
 const { mongoConnect } = require("./services/mongo");
 
+if (process.env.NODE_ENV !== "production") {
+  require("dotenv").config();
+}
+
 const server = http.createServer(app);
 
 async function startServer() {
