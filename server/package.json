@@ -21,8 +21,8 @@
     "test-watch": "jest --watch",
     "cluster": "pm2 start src/server.js -i max"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["NodeJs", "Javascript", "full-stack"],
+  "author": "Alexander",
   "license": "ISC",
   "dependencies": {
     "axios": "1.0.0",
