@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Nasa API",
   "main": "server.js",
+  "type": "module",
   "jest": {
     "verbose": true,
     "testMatch": [
