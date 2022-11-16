@@ -6,7 +6,7 @@
   "scripts": {
     "install-server": "npm install --prefix server",
     "install-client": "npm install --prefix client",
-    "install": "npm run install-server && npm r install-client",
+    "install": "npm run install-server && npm run install-client",
     "server": "npm run watch --prefix server",
     "client": "npm start --prefix client",
     "watch": "npm run server & npm run client",
@@ -24,8 +24,5 @@
   "bugs": {
     "url": "https://github.com/AlexanderAlatorreGovea/nasa-/issues"
   },
-  "homepage": "https://github.com/AlexanderAlatorreGovea/nasa-#readme",
-  "dependencies": {
-    "dotenv": "^16.0.3"
-  }
+  "homepage": "https://github.com/AlexanderAlatorreGovea/nasa-#readme"
 }
